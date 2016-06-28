@@ -1,4 +1,16 @@
 <!DOCTYPE html>
+
+<?php
+
+// Inialize session
+session_start();
+
+// Check, if username session is NOT set then this page will jump to login page
+if (!isset($_SESSION['pseudo'])) {
+header('Location: index.php');
+}
+
+?>
 <html>
 	<head>
 
@@ -100,7 +112,7 @@
       
 						<li><a> Communauté</a></li>
 						<li><img width="25"src="../public/images/avatar.png"/></li>
-						<li><a> <?php echo $_SESSION['login']; ?> </a>
+						<li><a> <?php echo $_SESSION['pseudo']; ?> </a>
 						 <ul>
                         
                         <li><a href="#">Votre groupe de connectés</a></li>
@@ -110,7 +122,7 @@
                 </ul>
 						</li>
 						<li><a>A propos</a></li>
-						<li><a href="@routes.Application.logout()">Quitter</a> </li>
+						<li><a href="logout.php">Quitter</a> </li>
 </ul>
 			</div>
 			</div>

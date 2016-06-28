@@ -1,41 +1,40 @@
-<?php
-//On reprend la suite du code
-else
-{
-    $message='';
-    if (empty($_POST['login1']) || empty($_POST['pass']) ) //Oublie d'un champ
-    {
-        $message = '<p>une erreur s\'est produite pendant votre identification.
-	Vous devez remplir tous les champs</p>
-	<p>Cliquez <a href="./index.php">ici</a> pour revenir</p>';
-    }
-    else //On check le mot de passe
-    {
-        $query=$db->prepare('SELECT *
-        FROM user WHERE login = :login1 AND password = :pass');
-        $query->bindValue(':login1',$_POST['login1'], PDO::PARAM_STR);
-        $query->execute();
-        $data=$query->fetch();
-	if ($data['password'] == md5($_POST['pass'])) // Acces OK !
-	{
-	   
-	    $message = '<p>Bienvenue '.$data['login'].', 
-			vous êtes maintenant connecté!</p>
-			<p>Cliquez <a href="./index.php">ici</a> 
-			pour revenir à la page d accueil</p>';  
-	}
-	else // Acces pas OK !
-	{
-	    $message = '<p>Une erreur s\'est produite 
-	    pendant votre identification.<br /> Le mot de passe ou le pseudo 
-            entré n\'est pas correcte.</p><p>Cliquez <a href="./connexion.php">ici</a> 
-	    pour revenir à la page précédente
-	    <br /><br />Cliquez <a href="./index.php">ici</a> 
-	    pour revenir à la page d accueil</p>';
-	}
-    $query->CloseCursor();
-    }
-    echo $message.'</div></body></html>';
 
-}
-?>
+ <html>
+
+
+<?php 
+
+// on se connecte à MySQL 
+$db = mysql_connect('localhost', 'root', ''); 
+
+// on sélectionne la base 
+mysql_select_db('smart_recipes',$db); 
+$Login = addslashes($_GET["login1"]);
+            $Password= addslashes($_GET["pass"]);
+
+// on crée la requête SQL 
+$sql = "SELECT *
+        FROM user WHERE login = '$Login' AND password = '$Password'"; 
+
+// on envoie la requête 
+$req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error()); 
+
+// on fait une boucle qui va faire un tour pour chaque enregistrement 
+while($data = mysql_fetch_assoc($req)) 
+    { 
+ // Inialize session
+session_start();
+ 
+// On s'amuse à créer quelques variables de session dans $_SESSION
+$_SESSION['pseudo'] = $Login;
+   	//redirect back to our list page since the insert worked
+        header("location: menu.php");   
+    } 
+
+// on ferme la connexion à mysql 
+mysql_close(); 
+?> 
+ 
+ </html>
+
+ 
