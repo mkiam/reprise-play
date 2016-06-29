@@ -52,18 +52,18 @@
 				
 					<div class="form-group">
 					
-						<input type="text"  id ="login" name="login1" class="form-control login"
-							placeholder="Pseudo"  value="<?php if (isset($_POST['login'])) echo htmlentities(trim($_POST['login1'])); ?>"
+						<input type="text"  required id ="login" name="login1" class="form-control login"
+							placeholder="Pseudo" required  value="<?php if (isset($_POST['login'])) echo htmlentities(trim($_POST['login1'])); ?>">
 					</div>
 					<div class="form-group">
-						<input type="password"  id="password" name="pass" class="form-control password"
-							placeholder="Mot de passe" value="<?php if (isset($_POST['pass'])) echo htmlentities(trim($_POST['pass'])); ?>"
+						<input type="password" required id="password" name="pass" class="form-control password"
+							placeholder="Mot de passe" value="<?php if (isset($_POST['pass'])) echo htmlentities(trim($_POST['pass'])); ?>">
 					</div>
 			
 					<input type="submit" class="btn btn-success" id="signinbtn"
 						value="Connexion">
 
-						</form>>
+						</form>
 						
 			
 			
@@ -79,27 +79,28 @@
 
 	<ul id="users"></ul>
 			<p>Création de compte</p>
-			<form method="POST" action="@routes.Application.addPerson()">
+		
+			<form method="GET" action="account.php">
 				<table>
 					<tr>
-						<td><input type="text" name ="Login" required  class="form-control login"
-							maxlength=20 placeholder="Pseudo" ></td>
+						<td><input type="text" name ="login2" required  class="form-control login"
+							maxlength=20 placeholder="Pseudo"  value="<?php if (isset($_POST['login2'])) echo htmlentities(trim($_POST['login2'])); ?>"></td>
 					</tr>
 					<tr>
 						<td><input type="text" name ="email" required  id="email" maxlength=50
-							placeholder="Email" class="form-control"></td>
+							placeholder="Email" class="form-control" value="<?php if (isset($_POST['email'])) echo htmlentities(trim($_POST['email'])); ?>"></td>
 					</tr>
 					<tr>
 						<td><input type="text"  name = "name" required id="nickname" maxlength=20
-							placeholder="Nom" class="form-control"></td>
+							placeholder="Nom" class="form-control" value="<?php if (isset($_POST['name'])) echo htmlentities(trim($_POST['name'])); ?>"></td>
 					</tr>
 					<tr>
 						<td><input type="text"  maxlength=20 name = "surname"
-							required placeholder="Prénom" class="form-control"></td>
+							required placeholder="Prénom" class="form-control" value="<?php if (isset($_POST['surname'])) echo htmlentities(trim($_POST['surname'])); ?>"></td>
 					</tr>
 					<tr>
 						<td><input type="password" required  name = "password" class="form-control password"
-							maxlength=20 placeholder="Mot de passe"></td>
+							maxlength=20 placeholder="Mot de passe" value="<?php if (isset($_POST['password'])) echo htmlentities(trim($_POST['password'])); ?>"></td>
 					</tr>
 					<tr>
 						<td><input type="submit" id="signupbtn"
