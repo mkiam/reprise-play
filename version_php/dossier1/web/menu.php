@@ -110,7 +110,7 @@ header('Location: index.php');
         </li>
 		
       
-						<li><a> Communauté</a></li>
+						<li><a href ="chat.php"> Communauté</a></li>
 						<li><img width="25"src="../public/images/avatar.png"/></li>
 						<li><a> <?php echo $_SESSION['pseudo']; ?> </a>
 						 <ul>
