@@ -111,12 +111,12 @@ header('Location: index.php');
 		
       
 						<li><a href ="chat.php"> Communauté</a></li>
-						<li><img width="25"src="../public/images/avatar.png"/></li>
+						<li><a href="profil/profil.php"><img width="26" height="16" src="../public/images/profil.jpg"/></a></li>
 						<li><a> <?php echo $_SESSION['pseudo']; ?> </a>
 						 <ul>
                         
                         <li><a href="#">Votre groupe de connectés</a></li>
-                        <li><a href="#">Modifier votre avatar</a></li>
+                        <li><a href="#">Modifier votre page</a></li>
                         <li><a href="#">Suivi de votre poids</a></li>
 						<li><a href="#">Vos favoris</a></li>
                 </ul>
