@@ -29,5 +29,5 @@ $sql = "INSERT INTO minichat(pseudo, message) VALUES('$Pseudo', '$Message')";
 // on envoie la requête 
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error()); 
 // Redirection du visiteur vers la page du minichat
-header('Location: minichat.php');
+header('Location: chat.php');
 ?>

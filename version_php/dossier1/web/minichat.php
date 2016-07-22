@@ -11,7 +11,7 @@ header('Location: index.php');
 
 ?>
 
-<html>
+<html>"minichat_post.php"
     <head>
         <meta charset="utf-8" />
         <title>Mini-chat</title>
@@ -24,7 +24,7 @@ header('Location: index.php');
     </style>
     <body>
     
-    <form action="minichat_post.php" method="post">
+    <form action= method="post">
         <p>
         <label for="message">Message</label> :  <input type="text" name="message" id="message" /><br />
 
@@ -52,6 +52,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
 
 while($data = mysql_fetch_assoc($req)) 
     { 
+
 
         echo '<p><strong>' . htmlspecialchars($data['pseudo']) . '</strong> : ' . htmlspecialchars($data['message']) . '</p>';
     }
